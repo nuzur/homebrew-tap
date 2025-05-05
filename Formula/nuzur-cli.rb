@@ -5,29 +5,29 @@
 class NuzurCli < Formula
   desc "nuzur cli tool"
   homepage "https://nuzur.com/"
-  version "0.0.20"
+  version "0.0.21"
   license "MIT"
 
   on_macos do
     if Hardware::CPU.intel?
-      url "https://github.com/nuzur/nuzur-cli/releases/download/v0.0.20/nuzur-cli_Darwin_x86_64.tar.gz",
+      url "https://github.com/nuzur/nuzur-cli/releases/download/v0.0.21/nuzur-cli_Darwin_x86_64.tar.gz",
         headers: [
           "Accept: application/octet-stream",
           "Authorization: bearer #{ENV["HOMEBREW_GITHUB_API_TOKEN"]}"
         ]
-      sha256 "0241eb37598e83b90ae3759fb37628f440f62f65358f2dae88c055dfa80c7215"
+      sha256 "250dd7da631622145dfe5d8329ec422f9a19132380b3fa0d142d8f802a138f4b"
 
       def install
         bin.install "nuzur-cli"
       end
     end
     if Hardware::CPU.arm?
-      url "https://github.com/nuzur/nuzur-cli/releases/download/v0.0.20/nuzur-cli_Darwin_arm64.tar.gz",
+      url "https://github.com/nuzur/nuzur-cli/releases/download/v0.0.21/nuzur-cli_Darwin_arm64.tar.gz",
         headers: [
           "Accept: application/octet-stream",
           "Authorization: bearer #{ENV["HOMEBREW_GITHUB_API_TOKEN"]}"
         ]
-      sha256 "29dc8d07940f429b32494490b35cd701658727c4714839806c5f6186789b8c80"
+      sha256 "37848897b293c1d22a7be72634fad31c9f6466077eb73f02b47d9a90a9dff85c"
 
       def install
         bin.install "nuzur-cli"
@@ -36,32 +36,26 @@ class NuzurCli < Formula
   end
 
   on_linux do
-    if Hardware::CPU.intel?
-      if Hardware::CPU.is_64_bit?
-        url "https://github.com/nuzur/nuzur-cli/releases/download/v0.0.20/nuzur-cli_Linux_x86_64.tar.gz",
-          headers: [
-            "Accept: application/octet-stream",
-            "Authorization: bearer #{ENV["HOMEBREW_GITHUB_API_TOKEN"]}"
-          ]
-        sha256 "637f573f778d5e1690081624de20cdaab95e75b91256982ade7c7e1b832cd45f"
-
-        def install
-          bin.install "nuzur-cli"
-        end
+    if Hardware::CPU.intel? and Hardware::CPU.is_64_bit?
+      url "https://github.com/nuzur/nuzur-cli/releases/download/v0.0.21/nuzur-cli_Linux_x86_64.tar.gz",
+        headers: [
+          "Accept: application/octet-stream",
+          "Authorization: bearer #{ENV["HOMEBREW_GITHUB_API_TOKEN"]}"
+        ]
+      sha256 "11b0d9fd2b77623cfa93332f94e8caf0a35c4600f665a65d3ed6f49d1e8cd7d8"
+      def install
+        bin.install "nuzur-cli"
       end
     end
-    if Hardware::CPU.arm?
-      if Hardware::CPU.is_64_bit?
-        url "https://github.com/nuzur/nuzur-cli/releases/download/v0.0.20/nuzur-cli_Linux_arm64.tar.gz",
-          headers: [
-            "Accept: application/octet-stream",
-            "Authorization: bearer #{ENV["HOMEBREW_GITHUB_API_TOKEN"]}"
-          ]
-        sha256 "10410833c4ef801080dfb70db03bba69c99fce6873fcd92a9b85279cde3aa2fa"
-
-        def install
-          bin.install "nuzur-cli"
-        end
+    if Hardware::CPU.arm? and Hardware::CPU.is_64_bit?
+      url "https://github.com/nuzur/nuzur-cli/releases/download/v0.0.21/nuzur-cli_Linux_arm64.tar.gz",
+        headers: [
+          "Accept: application/octet-stream",
+          "Authorization: bearer #{ENV["HOMEBREW_GITHUB_API_TOKEN"]}"
+        ]
+      sha256 "396cc9f125674fc1359a61c5aedb75fcf649f55e94bbf814e1bc00ee9a0c5a7f"
+      def install
+        bin.install "nuzur-cli"
       end
     end
   end
